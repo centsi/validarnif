@@ -87,7 +87,7 @@ def validar_nif_nie_cif(identificador: str, preprocesar: bool = True) -> bool:
 
     return validar_dni(identificador) or validar_nie(identificador) or validar_cif(identificador)
 
-def coger_tipo(identificador: str, preprocesar: bool = True) -> str|None:
+def coger_tipo(identificador: str, preprocesar: bool = True) -> (str|None,str|None):
     if not isinstance(identificador, str):
         return None
 
@@ -95,12 +95,16 @@ def coger_tipo(identificador: str, preprocesar: bool = True) -> str|None:
         identificador = _preprocesar(identificador)
 
     if validar_dni(identificador):
-        return 'DNI'
+        return 'DNI',identificador
 
     if validar_nie(identificador):
-        return 'NIE'
+        return 'NIE',identificador
 
     if validar_cif(identificador):
-        return 'CIF'
+        return 'CIF',identificador
 
-    return None
+    return None,None
+
+if __name__ == '__main__':
+    tipo = coger_tipo('6068L')
+    pass

@@ -1,6 +1,6 @@
 [project]
 name = "validarnif"
-version = "1.0.2"
+version = "1.0.3"
 description = "Módulo Python para la validación de identificadores fiscales españoles: NIF, NIE y CIF."
 readme = "README.md"
 requires-python = ">=3.10"
