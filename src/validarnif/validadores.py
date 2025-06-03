@@ -86,3 +86,21 @@ def validar_nif_nie_cif(identificador: str, preprocesar: bool = True) -> bool:
         identificador = _preprocesar(identificador)
 
     return validar_dni(identificador) or validar_nie(identificador) or validar_cif(identificador)
+
+def coger_nif_nie_cif(identificador: str, preprocesar: bool = True) -> str|None:
+    if not isinstance(identificador, str):
+        return None
+
+    if preprocesar:
+        identificador = _preprocesar(identificador)
+
+    if validar_dni(identificador):
+        return 'DNI'
+
+    if validar_nie(identificador):
+        return 'NIE'
+
+    if validar_cif(identificador):
+        return 'CIF'
+
+    return None
