@@ -103,8 +103,8 @@ def coger_tipo(identificador: str, preprocesar: bool = True) -> (str|None,str|No
     if validar_cif(identificador):
         return 'CIF',identificador
 
-    return None,None
+    return None,identificador
 
 if __name__ == '__main__':
-    tipo = coger_tipo('6068L')
+    tipo,id = coger_tipo('6068L')
     pass
