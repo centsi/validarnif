@@ -94,14 +94,23 @@ def coger_tipo(identificador: str, preprocesar: bool = True) -> (str|None,str|No
     if preprocesar:
         identificador = _preprocesar(identificador)
 
-    if validar_dni(identificador):
-        return 'DNI',identificador
+    try:
+        if validar_dni(identificador):
+            return 'DNI',identificador
+    except:
+        pass
 
-    if validar_nie(identificador):
-        return 'NIE',identificador
+    try:
+        if validar_nie(identificador):
+            return 'NIE',identificador
+    except:
+        pass
 
-    if validar_cif(identificador):
-        return 'CIF',identificador
+    try:
+        if validar_cif(identificador):
+            return 'CIF',identificador
+    except:
+        pass
 
     return None,identificador
 
